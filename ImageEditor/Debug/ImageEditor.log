@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\main.cpp(137,15): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  ImageEditor.vcxproj -> C:\Users\OwenZ\source\repos\ImageEditor\Debug\ImageEditor.exe
