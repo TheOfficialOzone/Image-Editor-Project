@@ -22,21 +22,20 @@ private:
 	SDL_Window* window;	//The window itself
 	SDL_Renderer* renderer;	//What will render to this window
 
-
-	double layerDrawStartX, layerDrawStartY;
-	double layerDrawEndX, layerDrawEndY;
+	//double layerDrawStartX, layerDrawStartY;	Depreciated
+	//double layerDrawEndX, layerDrawEndY;
 
 	Camera myCam;
-	double zoomAmount;
+	ViewPort myPort;
 public:
 	//Makes the window the size inputed
 	Window(int xSize, int ySize) {	
 		SDL_CreateWindowAndRenderer(xSize, ySize, SDL_WINDOW_RESIZABLE, &window, &renderer);
-
 		SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
-		resetLayerDrawPositions();
+		resetCamera();
 	}//	Window Constructor
+
 
 	~Window() {
 		SDL_DestroyRenderer(renderer);
@@ -58,27 +57,23 @@ public:
 
 	//Gets the size of the window while reffing to zoom
 	void getRelativeZoomSize(int* width, int* height);
-	
-	//Resets the LayerDrawPositions
-	void resetLayerDrawPositions();
 
-	//Setting the layerDrawPositions
-	void setLayerDrawPositions(SDL_Rect* newPos);
-	//Setting the layerDrawPositions
-	void setLayerDrawPositions(double xStart, double yStart, double xEnd, double yEnd);
+	//resets the camera's information
+	void resetCamera();
 
 	//Sets the amount of zoom there is
 	void setCameraZoom(double nZoom);
 	//Sets the amount of zoom there is
 	void setCameraPos(double x, double y);
 
-	//Gets an SDL_Rect of where to draw the layer
-	SDL_Rect* getLayerDrawRect();
-
 	//Gets a camera copy from the window
-	Camera getCamera();
-	//Gets the numbers for where to draw the layer
-	void getLayerDrawPositions(double* xStart, double* yStart, double* xEnd, double* yEnd);
+	Camera getCamera() {
+		return myCam;
+	}
+	//Gets a Viewport copy from the window
+	ViewPort getViewPort() {
+		return myPort;
+	}
 
 };// Window Class
 
