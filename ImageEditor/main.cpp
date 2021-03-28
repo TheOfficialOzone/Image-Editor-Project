@@ -23,7 +23,7 @@
 
 
 
-void waitForInput(Window* myWindow) {
+void waitForInput(Window* myWindow, Layer* myLayer2) {
 	//Checks for mosue wheel scrolling
 	SDL_Event event;
 
@@ -34,53 +34,39 @@ void waitForInput(Window* myWindow) {
 		while (SDL_PollEvent(&event)) {
 			int mouseX, mouseY;	//Gets mouse position
 			SDL_GetMouseState(&mouseX, &mouseY);
-			/*
+			
+			Camera myCam = myWindow->getCamera();	//Gets the Camera
 			if (event.type == SDL_MOUSEWHEEL) {	//Mouse Wheel Scrolls
 
 
-				
-				double dStartX, dStartY, dEndX, dEndY;	//Getting the displayed stuffs position
-				myWindow->getLayerDrawPositions(&dStartX, &dStartY, &dEndX, &dEndY);
+				const double factor = (event.wheel.y > 0 ? 1.1 : 0.9);
 
-				//Gets aspectRatio
-				double viewWidth = dEndX - dStartX;
-				double viewHeight = dEndY - dStartY;
+				int width, height;
+				int zoomWidth, zoomHeight;
 
-				double aspectRatio = viewWidth / viewHeight;
+				int myMouseX = mouseX, myMouseY = mouseY;
+				myLayer2->getRelativeMousePosition(&myMouseX, &myMouseY);
 
-				//If the mouse wheel is infact moved
-				//Inverses on zoom out
-				double mod = 1.0; 	//Scroll up
+				float xPercent = (float)myMouseX / myLayer2->getWidth();
+				float yPercent = (float)myMouseY / myLayer2->getHeight();
 
-				//Coordinates
-				double toLeft = mouseX - dStartX;	// X
-				double toRight = dEndX - mouseX;
+				myLayer2->getZoomSize(&width, &height);
+				myWindow->setCameraZoom(myCam.zoom * factor);
+				myLayer2->getZoomSize(&zoomWidth, &zoomHeight);
 
-				double toTop = mouseY - dStartY;	// Y
-				double toBottom = dEndY - mouseY;
+				float xDif = (zoomWidth - width);
+				float yDif = (zoomHeight - height);
 
-				if (event.wheel.y < 0) 	//Scroll down
-					mod = -1.0;
-
-				double zoomAmount = 30.0;	//How far it zooms
-
-				//Zooms from center
-				dStartX -= (toLeft / viewWidth) * aspectRatio * zoomAmount * mod;
-				dEndX += (toRight / viewWidth) * aspectRatio * zoomAmount * mod;
-
-				dStartY -= (toTop / viewHeight) * zoomAmount * mod;
-				dEndY += (toBottom / viewHeight) * zoomAmount * mod;
-
-				myWindow->setLayerDrawPositions(dStartX, dStartY, dEndX, dEndY);
+				myWindow->setCameraPos(myCam.x - xDif * xPercent, myCam.y - yDif * yPercent);
 			}
-			*/
+			
 			if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_MIDDLE)) {
 
 				Camera myCam = myWindow->getCamera();
-				//SDL_Rect* windowPos = myWindow->getLayerDrawRect();
 
 				myCam.x += mouseX - prevMouseX;
 				myCam.y += mouseY - prevMouseY;
+
 				myWindow->setCameraPos(myCam.x, myCam.y);
 			}
 			prevMouseX = mouseX;	//Stores the previous mouse position
@@ -94,75 +80,63 @@ int main() {
 
 	Window myWindow(1500, 1000);
 
-	Layer myLayer(&myWindow, "images/sample3.png");
+	Layer myLayer(&myWindow, "images/sample2.png");
 	myLayer.updateTexture();
-	Layer myLayer2(&myWindow, "images/sample2.png");
-	myLayer2.updateTexture();
 
+	Layer myLayer2(&myWindow, "images/Perfect.jpg");
+	myLayer2.updateTexture();
 
 	SDL_Color white;
 	white.r = 0;
 	white.g = 0;
-	white.b = 0;
-	white.a = 255;
-	
+	white.b = 255;
+	white.a = 120;
 
-	std::thread first(waitForInput, &myWindow);	//Runs input on another thread
+	std::thread first(waitForInput, &myWindow, &myLayer2);	//Runs input on another thread
 
 	double startTime = 0, endTime = 0;
 	while (true) {
+		const Uint8* keys = SDL_GetKeyboardState(NULL);
 		startTime = SDL_GetTicks();	//Timer start
 
 		myWindow.clearWindow();
 		
 		int mouseX, mouseY;
 
-		Camera myCam = myWindow.getCamera();
-		//myWindow.setCameraPos(myCam.x - 0.01, 0);
-		//myWindow.setCameraZoomAmount(myCam.zoom - 0.001);
+		Camera myCam = myWindow.getCamera();	//Gets the Camera
 
 		if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-			int width, height;
-			int zoomWidth, zoomHeight;
+			int myMouseX = mouseX, myMouseY = mouseY;
+			myLayer2.getRelativeMousePosition(&myMouseX, &myMouseY);
 
-			myWindow.getRelativeZoomSize(&width, &height);
-			myWindow.setCameraZoom(myCam.zoom + 0.01);
-			myWindow.getRelativeZoomSize(&zoomWidth, &zoomHeight);
-			float xDif = zoomWidth - width;
-			std::cout << zoomWidth << std::endl;
-			myWindow.setCameraPos(myCam.x - xDif / 4.0f, myCam.y);
+			int x[9];
+			int y[9];
 
-			/*
-			myLayer.getRelativeMousePosition(&mouseX, &mouseY);
-
-			int* x = new int[10];
-			int* y = new int[10];
-			for (int i = 0; i < 10; i++) {
-				x[i] = mouseX + i;
-				y[i] = mouseY + i;
+			for (int i = 0; i < 9; i++) {
+				x[i] = i % 3 - 1;
+				y[i] = i / 3 - 1;
 			}
 
-			myLayer.changePixels(white, x, y, 10);
-			myLayer.updateTexture();
-			*/
+			for (int i = 0; i < 9; i++) {
+				x[i] += myMouseX;
+				y[i] += myMouseY;
+			}
+			
+			myLayer2.changePixels(white, x, y, 9);
+			myLayer2.updateTexture();
 		}
-		if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_RIGHT)) {
-			myWindow.setCameraZoom(myCam.zoom - 0.01);
-		}
-		const Uint8* keys = SDL_GetKeyboardState(NULL);
-		if (keys[SDL_SCANCODE_LEFT]) myWindow.setCameraPos(myCam.x - 1, myCam.y);
-		if (keys[SDL_SCANCODE_RIGHT]) myWindow.setCameraPos(myCam.x + 1, myCam.y);
+
 
 
 		myLayer2.updateRenderArea();
-		//myLayer.updateRenderArea();
-
 		myLayer2.render();
-		//myLayer.render();
-		
+
+		myLayer.updateRenderArea();
+		myLayer.render();
+
 		myWindow.render();
 
-		SDL_PumpEvents();	//Allows to move the window
+		SDL_PumpEvents();	//INPUT
 
 		endTime = SDL_GetTicks();	//Timer end & Print
 		//std::cout << endTime - startTime << std::endl;

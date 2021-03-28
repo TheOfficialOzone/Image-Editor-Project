@@ -10,7 +10,7 @@ void Layer::changePixel(SDL_Color color, int x, int y) {
 
 	Uint32* pixels = (Uint32*)surface->pixels;
 	Uint32 dColor = SDL_MapRGBA(surface->format, color.r, color.g, color.b, color.a);
-	if (x < width && y < height)
+	if (getPixelInCanvas(x, y))
 		pixels[(y * width) + x] = dColor;	//Sets the pixel to the colour
 	
 	SDL_UnlockSurface(surface);	//Does the changes
@@ -24,7 +24,7 @@ void Layer::changePixels(SDL_Color color, int* x, int* y, int pixelAmount) {
 	Uint32 dColor = SDL_MapRGBA(surface->format, color.r, color.g, color.b, color.a);
 
 	for (int i = 0; i < pixelAmount; i++) 
-		if (x[i] < width && y[i] < height)
+		if (getPixelInCanvas(x[i], y[i]))
 			pixels[(y[i] * width) + x[i]] = dColor;	//Sets the pixel to the colour
 	
 
@@ -42,27 +42,32 @@ void Layer::updateTexture() {
 
 //Renders the layer
 void Layer::render() {
-	//SDL_RenderCopy(renderTo, texture, NULL, myWindow->getLayerDrawRect());	//Copies the image to the renderer
 	SDL_RenderCopy(renderTo, texture, &sourceArea, &renderArea);	//Copies the image to the renderer
 }
 
 
 //Gets the coordinates of the mouse related to the layer	 (gets stretched across screen so 4x4 != 8x8)
 void Layer::getRelativeMousePosition(int* mouseX, int* mouseY) {
-	*mouseX -= renderArea.x;
-	*mouseY -= renderArea.y;
+	Camera myCam = myWindow->getCamera();
+	ViewPort myPort = myWindow->getViewPort();
 
-	*mouseX = (int)(*mouseX * ((float)sourceArea.w / renderArea.w));	//Sets the new coordnates
-	*mouseY = (int)(*mouseY * ((float)sourceArea.h / renderArea.h));
-	/*
-	SDL_Rect* renderArea = myWindow->getLayerDrawRect();
+	*mouseX -= myCam.x + myPort.x;	//Adjustes for Camera pos & Viewport
+	*mouseY -= myCam.y + myPort.y;
 
-	*mouseX -= renderArea->x;
-	*mouseY -= renderArea->y;
+	*mouseX = (int)(*mouseX / myCam.zoom);	//Adjustes for zoom
+	*mouseY = (int)(*mouseY / myCam.zoom);
+}
 
-	*mouseX = *mouseX * ((float)width / renderArea->w);	//Sets the new coordnates
-	*mouseY = *mouseY * ((float)height / renderArea->h);
-	*/
+//Gets the coordinates of the pixel related to the screen
+void Layer::getScreenPositionFromPixel(int* pixelX, int* pixelY) {
+	Camera myCam = myWindow->getCamera();
+	ViewPort myPort = myWindow->getViewPort();
+
+	*pixelX = (int)(*pixelX * myCam.zoom);	//Adjustes for zoom
+	*pixelY = (int)(*pixelY * myCam.zoom);
+
+	*pixelX += myCam.x + myPort.x;	//Adjustes for Camera pos & Viewport
+	*pixelY += myCam.y + myPort.y;
 }
 
 //Updates where the layer will be rendered
@@ -78,25 +83,19 @@ void Layer::updateRenderArea() {
 	*/
 
 	Camera myCam = myWindow->getCamera();
-	ViewPort myPort;
-	myPort.x = 10;
-	myPort.y = 10;
-	myPort.w = 1000;
-	myPort.h = 1000;
-
+	ViewPort myPort = myWindow->getViewPort();
 
 	int rW = 0, rH = 0;
-	myWindow->getSize(&rW, &rH);
 	rW = myPort.w;
 	rH = myPort.h;
 
-	renderArea.x = myCam.x;	//render will always be on of camera
-	renderArea.y = myCam.y;
+	renderArea.x = myCam.x + myPort.x;	//render will always be on the camera
+	renderArea.y = myCam.y + myPort.y;
 
-	double renderZoom = (myCam.zoom < 1 ? myCam.zoom : 1);
+	double renderZoom = (myCam.zoom < 1 ? myCam.zoom : 1);	//Can probably be merged together
 	double sourceZoom = (myCam.zoom > 1 ? myCam.zoom : 1);
 
-	//std::cout << renderZoom << " " << sourceZoom << std::endl;
+	double zoom = myCam.zoom;
 
 	bool topBottom = true;//If it has done all 4 cases it will get that edge case
 	bool leftRight = true;
@@ -114,12 +113,12 @@ void Layer::updateRenderArea() {
 	}
 	*/
 	// RIGHT
-	if ((myCam.x - myPort.x + width * sourceZoom * renderZoom) > rW) {
-		renderArea.w = rW - (myCam.x - myPort.x);
-		sourceArea.w = (width - (width - (rW - (myCam.x - myPort.x)))) / sourceZoom / renderZoom;
+	if ((myCam.x + width * zoom) > rW) {
+		renderArea.w = rW - (myCam.x);
+		sourceArea.w = (width - (width - (rW - (myCam.x)))) / zoom;
 	}
 	else {
-		renderArea.w = width * renderZoom * sourceZoom;
+		renderArea.w = width * zoom;
 		sourceArea.w = width;
 
 		leftRight = false;
@@ -137,12 +136,12 @@ void Layer::updateRenderArea() {
 
 		topBottom = false;
 	}*/
-	if ((myCam.y - myPort.y + height * sourceZoom * renderZoom) > rH) {
-		renderArea.h = rH - (myCam.y - myPort.y);
-		sourceArea.h = (height - (height - (rH - (myCam.y - myPort.y)))) / sourceZoom / renderZoom;
+	if ((myCam.y + height * zoom) > rH) {
+		renderArea.h = rH - (myCam.y);
+		sourceArea.h = (height - (height - (rH - (myCam.y)))) / zoom;
 	}
 	else {
-		renderArea.h = height * renderZoom * sourceZoom;
+		renderArea.h = height * zoom;
 		sourceArea.h = height;
 
 		topBottom = false;
@@ -163,11 +162,11 @@ void Layer::updateRenderArea() {
 	}
 	*/
 	// LEFT
-	if (myCam.x < myPort.x) {
+	if (myCam.x < 0) {
 		renderArea.x = myPort.x;
-		renderArea.w = (width * renderZoom * sourceZoom + (myCam.x - myPort.x));
+		renderArea.w = (width * zoom + (myCam.x));
 
-		sourceArea.x = -(myCam.x - myPort.x) / sourceZoom / renderZoom;
+		sourceArea.x = -(myCam.x) / zoom;
 	}
 	else {
 		sourceArea.x = 0;
@@ -188,11 +187,11 @@ void Layer::updateRenderArea() {
 		topBottom = false;
 	}
 	*/
-	if (myCam.y < myPort.y) {
+	if (myCam.y < 0) {
 		renderArea.y = myPort.y;
-		renderArea.h = (height * renderZoom * sourceZoom + (myCam.y - myPort.y)); //(height + (myCam.y - myPort.y) > 0 ? height + (myCam.y - myPort.y) : 0) * renderZoom;
+		renderArea.h = (height * zoom + (myCam.y));
 
-		sourceArea.y = -(myCam.y - myPort.y) / sourceZoom / renderZoom;
+		sourceArea.y = -(myCam.y) / zoom;
 	}
 	else {
 		sourceArea.y = 0;
@@ -202,12 +201,12 @@ void Layer::updateRenderArea() {
 	//If it has done both Left right case
 	if (leftRight) {	//Clip Width
 		renderArea.w = rW;
-		sourceArea.w = rW / renderZoom / sourceZoom;
+		sourceArea.w = rW / zoom;
 	}
 	//If it has done both Left right case
 	if (topBottom) {	//Clip  height
 		renderArea.h = rH;
-		sourceArea.h = rH / renderZoom / sourceZoom;
+		sourceArea.h = rH / zoom;
 	}
 
 	SDL_Rect dRect;
@@ -215,6 +214,6 @@ void Layer::updateRenderArea() {
 	dRect.y = myPort.y - 1;
 	dRect.w = myPort.w + 2;
 	dRect.h = myPort.h + 2;
-	SDL_SetRenderDrawColor(renderTo, 0, 0, 0, 255);
+	SDL_SetRenderDrawColor(renderTo, 0, 0, 0, SDL_ALPHA_OPAQUE);
 	SDL_RenderDrawRect(renderTo, &dRect);
 }
