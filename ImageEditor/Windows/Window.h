@@ -22,18 +22,25 @@ private:
 	SDL_Window* window;	//The window itself
 	SDL_Renderer* renderer;	//What will render to this window
 
-	//double layerDrawStartX, layerDrawStartY;	Depreciated
-	//double layerDrawEndX, layerDrawEndY;
-
 	Camera myCam;
-	ViewPort myPort;
+	ViewPort layerPort;
 public:
-	//Makes the window the size inputed
-	Window(int xSize, int ySize) {	
+	//Makes the window the size inputed with the appropriate Cameras
+	Window(int xSize, int ySize, Camera newCam, ViewPort newPort) {	
+		SDL_CreateWindowAndRenderer(xSize, ySize, SDL_WINDOW_RESIZABLE, &window, &renderer);
+		SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+
+		myCam = newCam;	//Sets the camera & viewport
+		layerPort = newPort;
+	}//	Window Constructor
+
+	//Makes the window the size inputed with a default Camera
+	Window(int xSize, int ySize) {
 		SDL_CreateWindowAndRenderer(xSize, ySize, SDL_WINDOW_RESIZABLE, &window, &renderer);
 		SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 
 		resetCamera();
+		resetViewPort();
 	}//	Window Constructor
 
 
@@ -60,19 +67,35 @@ public:
 
 	//resets the camera's information
 	void resetCamera();
+	//resets the viewPorts's information
+	void resetViewPort();
 
 	//Sets the amount of zoom there is
-	void setCameraZoom(double nZoom);
-	//Sets the amount of zoom there is
-	void setCameraPos(double x, double y);
+	void setCameraZoom(double nZoom) {
+		myCam.zoom = nZoom;
+	}
+	//Sets the position of the windows Camera
+	void setCameraPos(double x, double y) {
+		myCam.x = x;
+		myCam.y = y;
+	}
 
 	//Gets a camera copy from the window
 	Camera getCamera() {
 		return myCam;
 	}
+	//Sets a new Camera for the Window
+	void setCamera(Camera newCam) {
+		myCam = newCam;
+	}
+
 	//Gets a Viewport copy from the window
 	ViewPort getViewPort() {
-		return myPort;
+		return layerPort;
+	}
+	//Sets a new Viewport for the Window
+	void setViewPort(ViewPort newPort) {
+		layerPort = newPort;
 	}
 
 };// Window Class

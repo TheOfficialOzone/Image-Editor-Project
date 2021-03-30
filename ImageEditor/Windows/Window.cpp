@@ -36,7 +36,6 @@ void Window::getRelativeZoomSize(int* width, int* height) {
 
 //Resets the LayerDrawPositions
 void Window::resetCamera() {
-
 	int width, height;
 	getSize(&width, &height);
 
@@ -45,19 +44,17 @@ void Window::resetCamera() {
 	myCam.w = width;
 	myCam.h = height;
 	myCam.zoom = 1;
-
-	myPort.x = 10;
-	myPort.y = 10;
-	myPort.w = 1000;
-	myPort.h = 1000;
 }// resetLayerDrawPositions
 
-//Sets the amount of zoom there is
-void Window::setCameraZoom(double nZoom) {
-	myCam.zoom = nZoom;
-}// setCameraZoomAmount
+	//resets the viewPorts's information
+void Window::resetViewPort() {
+	int width, height;
+	getSize(&width, &height);
 
-void Window::setCameraPos(double x, double y) {
-	myCam.x = x;
-	myCam.y = y;
+	layerPort.x = 0;
+	layerPort.y = 0;
+	layerPort.w = 800;
+	layerPort.h = 800;
+
+
 }

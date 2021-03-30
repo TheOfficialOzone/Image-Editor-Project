@@ -46,20 +46,17 @@ public:
 	Layer(Window* myWindow, std::string image) {
 		this->myWindow = myWindow;
 		renderTo = myWindow->getRenderer();	//Now points to the renderer
+		surface = IMG_Load(image.c_str());	//Loads the surface from the file
+
+		if (SDL_SetColorKey(surface, SDL_TRUE, SDL_RLEACCEL) == -1)	//Adds an alpha value per pixel
+			std::cout << "Color error";
 		
-
-		int imgFlags = IMG_INIT_JPG | IMG_INIT_PNG;
-		int initted = IMG_Init(imgFlags);
-		if ((initted & imgFlags) != imgFlags)
-			std::cout << "SDL_Image Not Initialized";
-
-		surface = SDL_ConvertSurfaceFormat(IMG_Load(image.c_str()), SDL_PIXELFORMAT_RGBA32, 0);
+		surface = SDL_ConvertSurfaceFormat(surface, SDL_PIXELFORMAT_RGBA32, 0);	//Converts to this pixel format
 		texture = SDL_CreateTextureFromSurface(renderTo, surface);
 		
-		alpha = SDL_ALPHA_OPAQUE;	//Defaults the alpha to Opaque
-
 		init();
 	}//	Layer Constructor
+
 	/*
 		Gets a window to render to & the size of the new surface
 	*/
@@ -79,6 +76,7 @@ public:
 		SDL_DestroyTexture(texture);	//Destroys the texture
 		texture = NULL;
 		renderTo = NULL;	//renderTo becomes empty
+		myWindow = NULL;	//myWindow becomes empty
 	}//	Layer Deconstructor
 
 	void init() {
@@ -93,6 +91,8 @@ public:
 		sourceArea.y = 0;
 		sourceArea.w = width;
 		sourceArea.h = height;
+
+		alpha = SDL_ALPHA_OPAQUE;	//Defaults the alpha to Opaque
 	}
 
 	//Changes 1 pixel in the area
@@ -107,8 +107,6 @@ public:
 	//Updates the texture
 	//Making the changes visible
 	void updateTexture();
-
-
 
 	//Gets the coordinates of the mouse related to the layer	 (gets stretched across screen so 4x4 != 8x8)
 	void getRelativeMousePosition(int* mouseX, int* mouseY);
@@ -127,6 +125,7 @@ public:
 		*width = this->width;
 		*height = this->height;
 	}
+
 	//Gets the width of the layer
 	int getWidth() {
 		return width;

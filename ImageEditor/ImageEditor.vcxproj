@@ -152,6 +152,7 @@
   <ItemGroup>
     <ClInclude Include="Camera\Camera.h" />
     <ClInclude Include="Layers\Layer.h" />
+    <ClInclude Include="Tools\Toolbar.h" />
     <ClInclude Include="Windows\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
