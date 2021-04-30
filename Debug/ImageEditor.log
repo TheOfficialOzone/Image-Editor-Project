@@ -1,0 +1,8 @@
+﻿  main.cpp
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(145,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(146,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\main.cpp(66,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\main.cpp(67,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  ImageEditor.vcxproj -> C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\Debug\ImageEditor.exe
+  Copy DLLs to Target Directory
+  0 File(s) copied

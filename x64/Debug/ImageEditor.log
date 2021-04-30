@@ -1,0 +1,13 @@
+﻿  Layer.cpp
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(9,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  LayerViewer.cpp
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\LayerViewer.h(7,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  main.cpp
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\main.cpp(13,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Toolbar.cpp
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Tools\Toolbar.h(7,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  LayoutManager.cpp
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Windows\LayoutManager.h(6,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Window.cpp
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Windows\Window.h(8,10): fatal error C1083: Cannot open include file: 'SDL.h': No such file or directory
+  Generating Code...

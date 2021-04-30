@@ -1,42 +1,61 @@
 ﻿  Layer.cpp
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(120,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(121,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(53,31): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(54,31): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(68,31): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(69,31): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(81,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(82,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(91,31): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(92,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(95,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(103,31): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(104,34): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(107,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(115,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(116,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(118,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(127,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(128,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(130,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(139,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(140,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(145,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(146,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(57,31): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(58,31): warning C4244: '-=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(72,31): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(73,31): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(85,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(86,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(96,31): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(97,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(100,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(108,31): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(109,34): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(112,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(120,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(121,32): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(123,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(132,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(133,33): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(135,27): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(144,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(145,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(149,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(149,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
 C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(150,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(151,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.cpp(152,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+  LayerViewer.cpp
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\LayerViewer.cpp(16,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\LayerViewer.cpp(17,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\LayerViewer.cpp(18,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\LayerViewer.cpp(19,18): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\LayerViewer.cpp(26,20): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\LayerViewer.cpp(27,21): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
   main.cpp
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(120,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(121,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\main.cpp(56,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\main.cpp(57,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(145,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(146,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\main.cpp(66,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\main.cpp(67,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+  Toolbar.cpp
+  LayoutManager.cpp
   Window.cpp
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Windows\Window.cpp(33,22): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Windows\Window.cpp(34,23): warning C4244: '*=': conversion from 'double' to 'int', possible loss of data
+  renderOrder.cpp
   Generating code
-  Previous IPDB not found, fall back to full compilation.
-  All 142 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  93 of 162 functions (57.4%) were compiled, the rest were copied from previous compilation.
+    61 functions were new in current compilation
+    1 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
+main.obj : warning LNK4020: a type record in 'c:\users\owenz\source\repos\imageeditor\imageeditor\imageeditor\release\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+Toolbar.obj : warning LNK4020: a type record in 'c:\users\owenz\source\repos\imageeditor\imageeditor\imageeditor\release\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+LayoutManager.obj : warning LNK4020: a type record in 'c:\users\owenz\source\repos\imageeditor\imageeditor\imageeditor\release\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+Window.obj : warning LNK4020: a type record in 'c:\users\owenz\source\repos\imageeditor\imageeditor\imageeditor\release\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
+renderOrder.obj : warning LNK4020: a type record in 'c:\users\owenz\source\repos\imageeditor\imageeditor\imageeditor\release\vc142.pdb' is corrupted; some symbols and types may not be accessible from the debugger
   ImageEditor.vcxproj -> C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\Release\ImageEditor.exe
+  Copy DLLs to Target Directory
+  C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\\dll\libjpeg-9.dll
+  C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\\dll\libpng16-16.dll
+  C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\\dll\libtiff-5.dll
+  C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\\dll\libwebp-7.dll
+  C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\\dll\SDL2.dll
+  C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\\dll\SDL2_image.dll
+  C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\\dll\zlib1.dll
+  7 File(s) copied

@@ -88,14 +88,18 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\ImageEditor;$(SolutionDir)\Dependencies\SDL2\include\SDL2; $(SolutionDir)\Dependencies\SDL_Image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ImageEditor;$(SolutionDir)\Dependencies\SDL2\include\SDL2;$(SolutionDir)\Dependencies\SDL_Image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)\Dependencies\SDL2\lib;$(SolutionDir)\Dependencies\SDL_Image\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/dll;$(SolutionDir)\Dependencies\SDL2\lib;$(SolutionDir)\Dependencies\SDL_Image\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>XCOPY "$(SolutionDir)"\dll\*.DLL "$(TargetDir)" /D /K /Y</Command>
+      <Message>Copy DLLs to Target Directory</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -105,7 +109,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\ImageEditor;$(SolutionDir)\Dependencies\SDL2\include\SDL2; $(SolutionDir)\Dependencies\SDL_Image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)\ImageEditor;$(SolutionDir)\Dependencies\SDL2\include\SDL2;$(SolutionDir)\Dependencies\SDL_Image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -113,8 +117,12 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>SDL2.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)\Dependencies\SDL2\lib;$(SolutionDir)\Dependencies\SDL_Image\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)/dll;$(SolutionDir)\Dependencies\SDL2\lib;$(SolutionDir)\Dependencies\SDL_Image\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
+    <PostBuildEvent>
+      <Command>XCOPY "$(SolutionDir)"\dll\*.DLL "$(TargetDir)" /D /K /Y</Command>
+      <Message>Copy DLLs to Target Directory</Message>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -146,13 +154,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Layers\Layer.cpp" />
+    <ClCompile Include="Layers\LayerViewer.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Tools\Toolbar.cpp" />
+    <ClCompile Include="Windows\LayoutManager.cpp" />
     <ClCompile Include="Windows\Window.cpp" />
+    <ClCompile Include="renderOrder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera\Camera.h" />
     <ClInclude Include="Layers\Layer.h" />
+    <ClInclude Include="Layers\LayerViewer.h" />
     <ClInclude Include="Tools\Toolbar.h" />
+    <ClInclude Include="Windows\LayoutManager.h" />
     <ClInclude Include="Windows\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

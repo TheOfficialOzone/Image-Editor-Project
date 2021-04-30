@@ -12,7 +12,7 @@
 #include "SDL_image.h"	//For loading images
 
 #include "Windows/Window.h"	//For rendering to
-
+#include "LayerViewer.h"	//For viewing the layers
 
 #include <string>
 #include <iostream>
@@ -31,13 +31,15 @@ private:
 	Window* myWindow;	//So it can get window size
 	SDL_Renderer* renderTo;	//Feed in a renderer and the layer may render to it
 
+	LayerViewer* myViewer;	//For rendering to
+
 	SDL_Surface* surface;	//Stores the information of the surface
 	SDL_Texture* texture;	//For rendering
 
 	SDL_Rect sourceArea;
 	SDL_Rect renderArea;	//What area this will render too
 
-	//double xScale, yScale;	//For the future :P
+	bool layerError = false;
 public:
 
 	/*
@@ -50,7 +52,10 @@ public:
 
 		if (SDL_SetColorKey(surface, SDL_TRUE, SDL_RLEACCEL) == -1)	//Adds an alpha value per pixel
 			std::cout << "Color error";
-		
+
+		if (surface == NULL)
+			layerError = true;
+
 		surface = SDL_ConvertSurfaceFormat(surface, SDL_PIXELFORMAT_RGBA32, 0);	//Converts to this pixel format
 		texture = SDL_CreateTextureFromSurface(renderTo, surface);
 		
@@ -69,6 +74,26 @@ public:
 
 		init();
 	}
+
+	/*
+		Gets a window to render to & an image to load as a surface
+	*/
+	Layer(LayerViewer* myViewer, std::string image) {
+		this->myViewer = myViewer;
+		renderTo = myViewer->getRenderer();	//Now points to the renderer
+		surface = IMG_Load(image.c_str());	//Loads the surface from the file
+
+		if (SDL_SetColorKey(surface, SDL_TRUE, SDL_RLEACCEL) == -1)	//Adds an alpha value per pixel
+			std::cout << "Color error";
+
+		if (surface == NULL)
+			layerError = true;
+
+		surface = SDL_ConvertSurfaceFormat(surface, SDL_PIXELFORMAT_RGBA32, 0);	//Converts to this pixel format
+		texture = SDL_CreateTextureFromSurface(renderTo, surface);
+
+		init();
+	}//	Layer Constructor
 
 	~Layer() {
 		SDL_FreeSurface(surface);	//Destroys the surface
@@ -100,7 +125,7 @@ public:
 	//Changes multiple pixels at once
 	void changePixels(SDL_Color color, int* x, int* y, int pixelAmount);
 
-	bool getPixelInCanvas(int x, int y) {
+	bool isPixelInCanvas(int x, int y) {
 		return (x < width && x >= 0 && y < height && y >= 0);
 	}
 
@@ -116,7 +141,7 @@ public:
 
 	//Gets the zoom size of the layer
 	void getZoomSize(int* width, int* height) {
-		Camera myCam = myWindow->getCamera();
+		Camera myCam = myViewer->getCamera();
 		*width = this->width * myCam.zoom;
 		*height = this->height * myCam.zoom;
 	}
@@ -138,6 +163,10 @@ public:
 	//Renders the layer
 	void render();
 
+	//Is the layer safe to modify?
+	bool isSafe() {
+		return !layerError;
+	}
 	//Updates where the layer will be rendered
 	void updateRenderArea();
 
