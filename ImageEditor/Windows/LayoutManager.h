@@ -4,6 +4,7 @@
 #define LAYOUTMANAGER_H
 
 #include "SDL.h"
+#include <cmath>
 #include "Window.h"
 #include "Layers/LayerViewer.h"
 #include "Tools/Toolbar.h"
@@ -24,6 +25,17 @@ private:
 	Toolbar* myToolbar;
 
 	Window* myWindow;
+	
+	//Default stuff that happens at the start
+	void init() {
+		layerXPercent = 0.0;
+		layerYPercent = 0.0;
+		layerWidthToPercent = 0.8;
+		layerHeightToPercent = 1.0;
+
+		calculateSizes();
+	}
+
 public:
 	//Constructor
 	//Takes a Window for getSize functions and what not
@@ -39,15 +51,10 @@ public:
 		return;
 	}//	LayoutManager Deconstructor
 
-	//Default stuff that happens at the start
-	void init() {
-		layerXPercent = 0.0;
-		layerYPercent = 0.0;
-		layerWidthToPercent = 0.8;
-		layerHeightToPercent = 1.0;
+	LayerViewer* getLayerViewer() { return myLayerViewer; }
 
-		calculateSizes();
-	}
+	//Gets the toolbar
+	Toolbar* getToolbar() { return myToolbar; }
 
 	//Calculates the size of each component of a window
 	void calculateSizes();
@@ -55,8 +62,51 @@ public:
 	//Gives the size to each component
 	void feedSizes();
 
+	void updateLayout() {
+		int width, height;
+		myWindow->getSize(&width, &height);
+	
+		//LayerViewer Scalar
+		SDL_FRect* imageView = new SDL_FRect();
 
+		imageView->x = layerXPercent * width;
+		imageView->y = layerYPercent * height;
+		imageView->w = std::round(layerWidthToPercent * width - layerViewerX);
+		imageView->h = std::round(layerHeightToPercent * height - layerViewerY);
 
+		myLayerViewer->setViewPort(imageView);
+
+		//Toolbar Scalar
+		SDL_FRect* toolbarView = new SDL_FRect();
+
+		toolbarView->x = layerViewerW;
+		toolbarView->y = 0;
+		toolbarView->w = std::round(width - toolbarX);
+		toolbarView->h = std::round(height - toolbarY);
+
+		myToolbar->setRenderArea(toolbarView);		
+	}
+
+	//Clears the window
+	void clearWindow() { myWindow->clearWindow(); }	
+
+	//Renders the elements
+	void renderElements() {
+		myLayerViewer->renderLayers();
+		myToolbar->renderToolBar();
+	}
+
+	//Updates the layers of the layer viewer
+	void updateLayers() { myLayerViewer->updateLayers(); }
+
+	//Forces the window to render
+	void renderWindow() { myWindow->render(); }
+
+	void forceRenderAll() {
+		updateLayers();
+		renderElements();
+		renderWindow();
+	}
 };
 
 

@@ -1,8 +1,107 @@
-﻿  main.cpp
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(145,24): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\Layers\Layer.h(146,26): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\main.cpp(66,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\ImageEditor\main.cpp(67,16): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-  ImageEditor.vcxproj -> C:\Users\OwenZ\source\repos\ImageEditor\ImageEditor\Debug\ImageEditor.exe
+﻿  Toolbar.cpp
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Layers\Layer.h(50,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Layers\Layer.h(51,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Layers\LayerViewer.h(122,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(234,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(237,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(239,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(240,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(442,40): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(443,40): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(444,40): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(446,1): warning C4244: '*=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(447,1): warning C4244: '*=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(448,1): warning C4244: '*=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(485,69): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(485,61): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(485,53): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(620,69): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(620,61): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(620,53): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Toolbar.h(29,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Toolbar.cpp(8,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Toolbar.cpp(9,18): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Toolbar.cpp(10,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Toolbar.cpp(32,20): warning C4018: '<': signed/unsigned mismatch
+  LayoutManager.cpp
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Layers\Layer.h(50,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Layers\Layer.h(51,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Layers\LayerViewer.h(122,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(234,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(237,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(239,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(240,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(442,40): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(443,40): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(444,40): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(446,1): warning C4244: '*=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(447,1): warning C4244: '*=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(448,1): warning C4244: '*=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(485,69): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(485,61): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(485,53): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(620,69): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(620,61): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(620,53): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Toolbar.h(29,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(72,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(73,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(74,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(75,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(82,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(84,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(85,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.cpp(32,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.cpp(33,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.cpp(34,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.cpp(35,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.cpp(39,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.cpp(40,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.cpp(41,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.cpp(42,19): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  main.cpp
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Layers\Layer.h(50,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Layers\Layer.h(51,18): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Layers\LayerViewer.h(122,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(234,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(237,41): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(239,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(240,64): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(442,40): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(443,40): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(444,40): warning C4244: '=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(446,1): warning C4244: '*=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(447,1): warning C4244: '*=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(448,1): warning C4244: '*=': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(485,69): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(485,61): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(485,53): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(620,69): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(620,61): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Interactables\interactables.h(620,53): warning C4244: 'argument': conversion from 'float' to 'Uint8', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Tools\Toolbar.h(29,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(72,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(73,32): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(74,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(75,28): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(82,20): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(84,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\Windows\LayoutManager.h(85,30): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(84,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(86,58): warning C4244: 'argument': conversion from 'int64_t' to 'double', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(86,50): warning C4244: 'argument': conversion from 'int64_t' to 'double', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(105,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(118,24): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(120,59): warning C4244: 'argument': conversion from 'int64_t' to 'double', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(120,51): warning C4244: 'argument': conversion from 'int64_t' to 'double', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(127,25): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(138,22): warning C4244: 'initializing': conversion from 'int64_t' to 'double', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(138,41): warning C4244: 'initializing': conversion from 'int64_t' to 'double', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(164,17): warning C4244: '=': conversion from 'int64_t' to 'int', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(165,17): warning C4244: '=': conversion from 'int64_t' to 'int', possible loss of data
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(261,7): warning C4101: 'mouseX': unreferenced local variable
+C:\Users\Ozone\tempss\ImageEditor\ImageEditor\main.cpp(261,15): warning C4101: 'mouseY': unreferenced local variable
+  Generating Code...
+  ImageEditor.vcxproj -> C:\Users\Ozone\tempss\ImageEditor\Debug\ImageEditor.exe
   Copy DLLs to Target Directory
   0 File(s) copied

@@ -89,6 +89,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\ImageEditor;$(SolutionDir)\Dependencies\SDL2\include\SDL2;$(SolutionDir)\Dependencies\SDL_Image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,6 +111,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\ImageEditor;$(SolutionDir)\Dependencies\SDL2\include\SDL2;$(SolutionDir)\Dependencies\SDL_Image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -159,12 +161,12 @@
     <ClCompile Include="Tools\Toolbar.cpp" />
     <ClCompile Include="Windows\LayoutManager.cpp" />
     <ClCompile Include="Windows\Window.cpp" />
-    <ClCompile Include="renderOrder.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera\Camera.h" />
     <ClInclude Include="Layers\Layer.h" />
     <ClInclude Include="Layers\LayerViewer.h" />
+    <ClInclude Include="Tools\Interactables\interactables.h" />
     <ClInclude Include="Tools\Toolbar.h" />
     <ClInclude Include="Windows\LayoutManager.h" />
     <ClInclude Include="Windows\Window.h" />

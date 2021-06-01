@@ -2,7 +2,7 @@
 
 
 #include "Layer.h"
-
+#include "LayerViewer.h"
 
 //Changes 1 pixel in the area
 void Layer::changePixel(SDL_Color color, int x, int y) {
@@ -38,63 +38,69 @@ void Layer::changePixels(SDL_Color color, int* x, int* y, int pixelAmount) {
 //Making the changes visible
 void Layer::updateTexture() {
 	SDL_DestroyTexture(texture);	//Destroys the texture
+	SDL_Texture* deleteTexture = texture;
 	texture = SDL_CreateTextureFromSurface(renderTo, surface);	//Creates the texture
-
+	SDL_DestroyTexture(deleteTexture);
 	SDL_QueryTexture(texture, NULL, NULL, &width, &height);	//Gets size of texture so the layer isn't off
 }
 
 //Renders the layer
 void Layer::render() {
-	SDL_RenderCopy(renderTo, texture, &sourceArea, &renderArea);	//Copies the image to the renderer
+	SDL_RenderCopyF(renderTo, texture, &sourceArea, &renderArea);	//Copies the image to the renderer
 }
 
 
 //Gets the coordinates of the mouse related to the layer	 (gets stretched across screen so 4x4 != 8x8)
-void Layer::getRelativeMousePosition(int* mouseX, int* mouseY) {
-	Camera myCam = myViewer->getCamera();
-	ViewPort myPort = myViewer->getViewPort();
+void Layer::getRelativeMousePosition(LayerViewer* myViewer, int* mouseX, int* mouseY) {
+	Camera* myCam = myViewer->getCamera();
+	SDL_FRect* myPort = myViewer->getViewPort();
 
-	*mouseX -= myCam.x + myPort.x;	//Adjustes for Camera pos & Viewport
-	*mouseY -= myCam.y + myPort.y;
+	*mouseX -= myCam->x + myPort->x;	//Adjustes for Camera pos & Viewport
+	*mouseY -= myCam->y + myPort->y;
 
-	*mouseX = (int)(*mouseX / myCam.zoom);	//Adjustes for zoom
-	*mouseY = (int)(*mouseY / myCam.zoom);
+	*mouseX = (int)(*mouseX / myCam->zoom);	//Adjustes for zoom
+	*mouseY = (int)(*mouseY / myCam->zoom);
 }
 
 //Gets the coordinates of the pixel related to the screen
-void Layer::getScreenPositionFromPixel(int* pixelX, int* pixelY) {
-	Camera myCam = myViewer->getCamera();
-	ViewPort myPort = myViewer->getViewPort();
+void Layer::getScreenPositionFromPixel(LayerViewer* myViewer, int* pixelX, int* pixelY) {
+	Camera* myCam = myViewer->getCamera();
+	SDL_FRect* myPort = myViewer->getViewPort();
 
-	*pixelX = (int)(*pixelX * myCam.zoom);	//Adjustes for zoom
-	*pixelY = (int)(*pixelY * myCam.zoom);
+	*pixelX = (int)(*pixelX * myCam->zoom);	//Adjustes for zoom
+	*pixelY = (int)(*pixelY * myCam->zoom);
 
-	*pixelX += myCam.x + myPort.x;	//Adjustes for Camera pos & Viewport
-	*pixelY += myCam.y + myPort.y;
+	*pixelX += myCam->x + myPort->x;	//Adjustes for Camera pos & Viewport
+	*pixelY += myCam->y + myPort->y;
 }
 
+void Layer::getZoomSize(LayerViewer* myViewer, int* width, int* height) {
+	Camera* myCam = myViewer->getCamera();
+	*width = this->width * myCam->zoom;
+	*height = this->height * myCam->zoom;
+}
 //Updates where the layer will be rendered
-void Layer::updateRenderArea() {
-	Camera myCam = myViewer->getCamera();
-	ViewPort myPort = myViewer->getViewPort();
+void Layer::updateRenderArea(LayerViewer* myViewer) {
+	Camera* myCam = myViewer->getCamera();
+	SDL_FRect* myPort = myViewer->getViewPort();
 
 	double rW = 0, rH = 0;
-	rW = myPort.w;
-	rH = myPort.h;
+	rW = myPort->w;
+	rH = myPort->h;
 
-	renderArea.x = myCam.x + myPort.x;	//render will always be on the camera
-	renderArea.y = myCam.y + myPort.y;
+	renderArea.x = myCam->x + myPort->x;	//render will always be on the camera
+	renderArea.y = myCam->y + myPort->y;
 
-	double zoom = myCam.zoom;
+	double zoom = myCam->zoom;
 
 	bool topBottom = true;//If it has done all 4 cases it will get that edge case
 	bool leftRight = true;
 
-	int addOne = (myCam.zoom == 1.0 ? 0 : 1);
+	int addOne = (myCam->zoom == 1.0 ? 0 : 1);
 	// RIGHT
-	if ((myCam.x + width * zoom) > rW) {
-		renderArea.w = rW - myCam.x + addOne;	//Plus one so it touches the right edge when not over the left edge
-		sourceArea.w = (rW - myCam.x) / zoom;
+	if ((myCam->x + width * zoom) > rW) {
+		renderArea.w = rW - myCam->x + addOne;	//Plus one so it touches the right edge when not over the left edge
+		sourceArea.w = (rW - myCam->x) / zoom;
 	}
 	else {
 		renderArea.w = width * zoom;
@@ -104,9 +110,9 @@ void Layer::updateRenderArea() {
 	}
 
 	// BOTTOM
-	if ((myCam.y + height * zoom) > rH) {
-		renderArea.h = rH - myCam.y + addOne;	//Plus one so it touches the bottom edge when not over the top edge
-		sourceArea.h =  (rH - myCam.y) / zoom;
+	if ((myCam->y + height * zoom) > rH) {
+		renderArea.h = rH - myCam->y + addOne;	//Plus one so it touches the bottom edge when not over the top edge
+		sourceArea.h =  (rH - myCam->y) / zoom;
 	}
 	else {
 		renderArea.h = height * zoom;
@@ -116,11 +122,11 @@ void Layer::updateRenderArea() {
 	}
 
 	// LEFT
-	if (myCam.x < 0) {
-		renderArea.x = myPort.x;
-		renderArea.w = (width * zoom + myCam.x);
+	if (myCam->x < 0) {
+		renderArea.x = myPort->x;
+		renderArea.w = (width * zoom + myCam->x);
 
-		sourceArea.x = -myCam.x / zoom;
+		sourceArea.x = -myCam->x / zoom;
 	}
 	else {
 		sourceArea.x = 0;
@@ -128,11 +134,11 @@ void Layer::updateRenderArea() {
 	}
 
 	// TOP
-	if (myCam.y < 0) {
-		renderArea.y = myPort.y;
-		renderArea.h = (height * zoom + myCam.y);
+	if (myCam->y < 0) {
+		renderArea.y = myPort->y;
+		renderArea.h = (height * zoom + myCam->y);
 
-		sourceArea.y = -myCam.y / zoom;
+		sourceArea.y = -myCam->y / zoom;
 	}
 	else {
 		sourceArea.y = 0;

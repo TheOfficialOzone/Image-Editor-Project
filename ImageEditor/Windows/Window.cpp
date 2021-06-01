@@ -19,6 +19,8 @@ void Window::clearWindow() {
 
 //Renders the Window
 void Window::render() {
+	if (renderer == nullptr)
+		std::cout << "No renderer \n";
 	SDL_RenderPresent(renderer);
 }//	render
 
